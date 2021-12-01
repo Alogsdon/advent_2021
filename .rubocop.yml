@@ -1,0 +1,65 @@
+# Rubocop base rules
+# Please document exclusions/deviations from the community baseline
+
+AllCops:
+
+  # Enable newly added Cops automatically
+  NewCops: enable
+
+  Exclude:
+    - app/views/**/* # Rubocop does not support .erb out of the box
+    - bin/**/*
+    - client/**/*
+    - db/**/*
+    - log/**/*
+    - node_modules/**/*
+    - script/**/*
+    - vendor/**/*
+
+Layout/LineLength:
+  AutoCorrect: true
+  Max: 120
+
+Metrics/BlockLength:
+
+  # This exclusion is aimed for RSpec DSL blocks
+  ExcludedMethods: ['describe', 'context']
+
+Style/Documentation:
+
+  # Don't require comments as documentation.
+  # They're optional though. Prefer readable code.
+  Enabled: false
+
+Style/DoubleNegation:
+
+  # Allow double negation.
+  # (If enabled, this Cop warns when we use it.)
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+
+  # This Cop adds a comment to the top of every file
+  # to enable a new ruby feature: immutable strings.
+  #
+  # The Ruby creator said this feature would be enabled
+  # by default on Ruby 3.
+  # Switching from Ruby 2 to 3 would be painful if the
+  # codebase was not prepared for it, so one way to prepare
+  # was to enable this optional feature.
+  #
+  # However, this plan was canceled.
+  # See https://bugs.ruby-lang.org/issues/11473#note-53
+  #
+  # Disable the Cop, we can opt-in on a case-by-case basis.
+  Enabled: false
+
+Style/StringLiterals:
+
+  # Allow single or double quotes.
+  # There's times when one or the other makes sense.
+  # Please try to be consistent within the same file, though.
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: False
