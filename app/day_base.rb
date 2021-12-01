@@ -1,20 +1,11 @@
 class DayBase
   class << self
-    def day
-      raise 'implement self.day!'
-    end
-
     def read_input
-      File.readlines("./inputs/day#{day}.txt")
+      File.readlines("./inputs/day#{const_get(:DAY)}.txt")
     end
 
     def formatted_input
       read_input.map(&:strip)
-    end
-
-    def print_results
-      pp(new.part1)
-      pp(new.part2)
     end
   end
 
